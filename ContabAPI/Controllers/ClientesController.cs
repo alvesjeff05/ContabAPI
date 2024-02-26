@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabAPI.Context;
 using ContabAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabAPI.Controllers
 {
@@ -23,6 +24,8 @@ namespace ContabAPI.Controllers
 
         // GET: api/Clientes
         [HttpGet]
+        [Authorize]
+
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
         {
           if (_context.Clientes == null)
@@ -34,6 +37,8 @@ namespace ContabAPI.Controllers
 
         // GET: api/Clientes/5
         [HttpGet("{id}")]
+        [Authorize]
+
         public async Task<ActionResult<Cliente>> GetCliente(int id)
         {
           if (_context.Clientes == null)
@@ -53,6 +58,8 @@ namespace ContabAPI.Controllers
         // PUT: api/Clientes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> PutCliente(int id, Cliente cliente)
         {
             if (id != cliente.IdCliente)
@@ -84,6 +91,8 @@ namespace ContabAPI.Controllers
         // POST: api/Clientes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
+
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
           if (_context.Clientes == null)
@@ -98,6 +107,8 @@ namespace ContabAPI.Controllers
 
         // DELETE: api/Clientes/5
         [HttpDelete("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> DeleteCliente(int id)
         {
             if (_context.Clientes == null)

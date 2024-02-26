@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabAPI.Context;
 using ContabAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabAPI.Controllers
 {
@@ -23,6 +24,8 @@ namespace ContabAPI.Controllers
 
         // GET: api/Funcionarios
         [HttpGet]
+        [Authorize]
+
         public async Task<ActionResult<IEnumerable<Funcionario>>> GetFuncionarios()
         {
           if (_context.Funcionarios == null)
@@ -34,6 +37,8 @@ namespace ContabAPI.Controllers
 
         // GET: api/Funcionarios/5
         [HttpGet("{id}")]
+        [Authorize]
+
         public async Task<ActionResult<Funcionario>> GetFuncionario(int id)
         {
           if (_context.Funcionarios == null)
@@ -53,6 +58,8 @@ namespace ContabAPI.Controllers
         // PUT: api/Funcionarios/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> PutFuncionario(int id, Funcionario funcionario)
         {
             if (id != funcionario.IdFuncionario)
@@ -84,6 +91,8 @@ namespace ContabAPI.Controllers
         // POST: api/Funcionarios
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
+
         public async Task<ActionResult<Funcionario>> PostFuncionario(Funcionario funcionario)
         {
           if (_context.Funcionarios == null)
@@ -98,6 +107,8 @@ namespace ContabAPI.Controllers
 
         // DELETE: api/Funcionarios/5
         [HttpDelete("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> DeleteFuncionario(int id)
         {
             if (_context.Funcionarios == null)

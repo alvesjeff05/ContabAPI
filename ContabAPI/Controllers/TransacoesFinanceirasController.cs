@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContabAPI.Context;
 using ContabAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ContabAPI.Controllers
 {
@@ -23,6 +24,8 @@ namespace ContabAPI.Controllers
 
         // GET: api/TransacoesFinanceiras
         [HttpGet]
+        [Authorize]
+
         public async Task<ActionResult<IEnumerable<TransacoesFinanceira>>> GetTransacoesFinanceiras()
         {
           if (_context.TransacoesFinanceiras == null)
@@ -34,6 +37,8 @@ namespace ContabAPI.Controllers
 
         // GET: api/TransacoesFinanceiras/5
         [HttpGet("{id}")]
+        [Authorize]
+
         public async Task<ActionResult<TransacoesFinanceira>> GetTransacoesFinanceira(int id)
         {
           if (_context.TransacoesFinanceiras == null)
@@ -53,6 +58,8 @@ namespace ContabAPI.Controllers
         // PUT: api/TransacoesFinanceiras/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> PutTransacoesFinanceira(int id, TransacoesFinanceira transacoesFinanceira)
         {
             if (id != transacoesFinanceira.IdTransacao)
@@ -84,6 +91,8 @@ namespace ContabAPI.Controllers
         // POST: api/TransacoesFinanceiras
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
+
         public async Task<ActionResult<TransacoesFinanceira>> PostTransacoesFinanceira(TransacoesFinanceira transacoesFinanceira)
         {
           if (_context.TransacoesFinanceiras == null)
@@ -98,6 +107,8 @@ namespace ContabAPI.Controllers
 
         // DELETE: api/TransacoesFinanceiras/5
         [HttpDelete("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> DeleteTransacoesFinanceira(int id)
         {
             if (_context.TransacoesFinanceiras == null)
